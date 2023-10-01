@@ -18,7 +18,6 @@ services:
       TCP_DELAY: 10 #ms
     ports:
       - 6379:6379
-Uncomment the below code if you want to run the backend in docker as well
  backend:
    container_name: backend
    build:
