@@ -27,7 +27,7 @@ async function reset(account: string): Promise<void> {
     }
 }
 
-// Change 0
+// Change 0: Original Code
 // async function charge(account: string, charges: number): Promise<ChargeResult> {
 //     const client = await connect();
 //     try {
@@ -44,7 +44,7 @@ async function reset(account: string): Promise<void> {
 //     }
 // }
 
-// Change 1
+// Change 1: Use Transaction to execute DB Ops
 // async function charge(account: string, charges: number): Promise<ChargeResult> {
 //     const client = await connect();
 
@@ -92,7 +92,7 @@ async function reset(account: string): Promise<void> {
 //     }
 // }
 
-
+// Change 2: Use Redis Lock and Tractation together
 async function charge(account: string, charges: number): Promise<ChargeResult> {
     const client = await connect();
 

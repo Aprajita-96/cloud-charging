@@ -10,8 +10,8 @@ async function basicLatencyTest() {
     await app.post("/charge").expect(200);
     await app.post("/charge").expect(200);
     await app.post("/charge").expect(200);
-    // await app.post("/charge").expect(200);
-    // await app.post("/charge").expect(200);
+    await app.post("/charge").expect(200);
+    await app.post("/charge").expect(200);
     console.log(`Latency: ${performance.now() - start} ms`);
 }
 
