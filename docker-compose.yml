@@ -1,0 +1,32 @@
+version: "3.0"
+
+services:
+  redis:
+    container_name: redis
+    image: redis:7-bullseye
+
+# Adds additional latency to simulate real-life conditions on AWS
+  middleware:
+    container_name: middleware
+    build:
+      context: latency-middleware
+    links: [redis]
+    depends_on: [redis]
+    environment:
+      SERVICE_HOST: redis
+      SERVICE_PORT: 6379
+      TCP_DELAY: 10 #ms
+    ports:
+      - 6379:6379
+# Uncomment the below code if you want to run the backend in docker as well
+#  backend:
+#    container_name: backend
+#    build:
+#      context: backend
+#    ports:
+#      - 3000:3000
+#    environment:
+#      REDIS_HOST: middleware
+#      REDIS_PORT: 6379
+#    links: [middleware]
+#    depends_on: [middleware]
